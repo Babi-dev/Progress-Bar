@@ -29,15 +29,19 @@ const arrQuant = [
 
 function ProgressBarExemple() {
   const [percentage, setPercentage] = useState(0);
+  const [valuePrint, setValuePrint] = useState(0);
   const response = arrQuant.reduce((total, item) => total + item.qtd, 0);
   let total = response;
 
   const qualquer = (i, item, total) =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log("Impresso", i, item, total);
         const percentage = 100 / total;
+        const printer = response - total;
+        setValuePrint(printer);
         setPercentage(percentage);
+
+        console.log("Impresso", i, item, total, printer);
         resolve();
       }, 2000);
     });
@@ -51,7 +55,10 @@ function ProgressBarExemple() {
     }
   }
   return (
-    <div>
+    <div className="ContainerProgressBar">
+      <span>
+        {valuePrint} de {response}
+      </span>
       <ProgressBar percentage={percentage} />
 
       <button onClick={print}>Imprimir</button>

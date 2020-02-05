@@ -1,14 +1,44 @@
-.ProgressBar {
-  position: relative;
-  height: 20px;
-  width: 340px;
-  border-radius: 50px;
-  border: 1px solid #333333;
-}
+.ContainerProgressBar{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 
-.Filler {
-  background: green;
-  height: 100%;
-  border-radius: inherit;
-  transition: width .2s ease-in;
+  button {
+    width: 160px;
+    height: 32px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: solid 1px green;
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  button:focus,
+  button:hover {
+    background-color: green;
+    color: #ffffff;
+    border: none;
+  }
+
+  .ProgressBar {
+    position: relative;
+    height: 20px;
+    width: 340px;
+    border-radius: 50px;
+    border: 1px solid #333333;
+  }
+
+  .Filler {
+    background: green;
+    height: 100%;
+    border-radius: inherit;
+    transition: width .2s ease-in;
+  }
 }
