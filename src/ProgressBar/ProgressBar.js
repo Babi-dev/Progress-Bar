@@ -3,7 +3,15 @@ import React, { useState } from "react";
 import "./style.scss";
 
 const Filler = ({ percentage }) => {
-  return <div className="Filler" style={{ width: `${percentage}%` }} />;
+  return (
+    <div
+      className="Filler"
+      style={{
+        width: `${percentage}%`,
+        backgroundColor: percentage > 70 ? "#87221f" : "#cf322f"
+      }}
+    />
+  );
 };
 
 const ProgressBar = ({ percentage }) => {
@@ -16,12 +24,12 @@ const ProgressBar = ({ percentage }) => {
 
 const arrQuant = [
   {
-    item: "Item 1",
+    item: "Produto 1",
     qtd: 10,
     qtd_print: 0
   },
   {
-    item: "Item 2",
+    item: "Produto 2",
     qtd: 20,
     qtd_print: 0
   }
@@ -33,7 +41,7 @@ function ProgressBarExemple() {
   const response = arrQuant.reduce((total, item) => total + item.qtd, 0);
   let total = response;
 
-  const qualquer = (i, item, total) =>
+  const qualquer = ({ item }, total) =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
         const printer = response - total;
@@ -47,7 +55,9 @@ function ProgressBarExemple() {
           "Impresso:",
           printer,
           "Porcentagem:",
-          percentage + `%`
+          percentage + `%`,
+          "Item:",
+          item
         );
         resolve();
       }, 2000);
@@ -57,7 +67,7 @@ function ProgressBarExemple() {
     for (const item of arrQuant) {
       for (let i = 0; i < item.qtd - item.qtd_print; i++) {
         total = total - 1;
-        await qualquer(i, item, total);
+        await qualquer(item, total);
       }
     }
   }

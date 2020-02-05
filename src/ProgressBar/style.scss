@@ -29,14 +29,14 @@
 
   .ProgressBar {
     position: relative;
-    height: 20px;
+    height: 14px;
     width: 340px;
-    border-radius: 50px;
-    border: 1px solid #333333;
+    border-radius: 6px;
+    // border: 1px solid #333333;
+    background-color: #efefef;
   }
 
   .Filler {
-    background: green;
     height: 100%;
     border-radius: inherit;
     transition: width .2s ease-in;
